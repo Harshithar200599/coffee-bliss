@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="Media\coffeebliss logo.png" alt="Coffee Shop Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home">
+    <div class="hero">
+        <h1>Welcome to Coffee Bliss</h1>
+        <p>Freshly brewed happiness in every cup!</p>
+        <button onclick="location.href='#products'">Order Now</button>
+    </div>
+</section>
+
+<section id="products">
+    <h2>Our Coffee Menu</h2>
+    <div class="product-grid">
+        <div class="product">
+            <img src="Media\espresso.jpg" alt="Espresso">
+            <h3>Espresso</h3>
+            <p>₹120</p>
+            <button onclick="addToCart('Espresso', 120)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="Media\cappuccino.jpg" alt="Cappuccino">
+            <h3>Cappuccino</h3>
+            <p>₹150</p>
+            <button onclick="addToCart('Cappuccino', 150)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="Media\latte.webp" alt="Latte">
+            <h3>Latte</h3>
+            <p>₹140</p>
+            <button onclick="addToCart('Latte', 140)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="Media\mocha.webp"alt="Mocha">
+            <h3>Mocha</h3>
+            <p>₹160</p>
+            <button onclick="addToCart('Mocha', 160)">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>Coffee Bliss is dedicated to serving the finest coffee with a smile. Enjoy our cozy ambiance and friendly service!</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <h3>Phone: 9876543210</h3>
+    <h4>Instagram: @coffeebliss</h4>
+    <form onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<section id="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+    <button id="checkout-btn" onclick="showPayment()" style="display:none;">Checkout</button>
+    <div id="checkout-message"></div>
+    <div id="payment-section" style="display:none;">
+        <h3>Payment Options</h3>
+        <form id="payment-form" onsubmit="processPayment(event)">
+            <label>
+                <input type="radio" name="payment-method" value="card" checked onchange="togglePaymentFields()"> Credit/Debit Card
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="upi" onchange="togglePaymentFields()"> UPI
+            </label>
+            <div id="card-fields">
+                <input type="text" placeholder="Card Number" required>
+                <input type="text" placeholder="Name on Card" required>
+                <input type="text" placeholder="Expiry (MM/YY)" required>
+                <input type="text" placeholder="CVV" required>
+            </div>
+            <div id="upi-fields" style="display:none;">
+                <input type="text" placeholder="UPI ID (e.g. yourname@upi)" required>
+            </div>
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Coffee Bliss. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
